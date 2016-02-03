@@ -4,29 +4,33 @@
  */
 //medoo
 
+error_reporting(0);
+
 //Define DB Table Name
 $db_table['user'] = "user";
 
 //Version
-$version   ="2.4.6";
+$version   ="2.4.5-M2";
+
+//Safe is very important
+foreach($_GET as $k => $v){
+	if(is_array($v)){
+		die('Array is not allowed to give in this system');
+	}
+}
+foreach($_POST as $k => $v){
+	if(is_array($v)){
+		die('Array is not allowed to give in this system');
+	}
+}
+foreach($_COOKIE as $k => $v){
+	if(is_array($v)){
+		die('Array is not allowed to give in this system');
+	}
+}
 
 //set timezone
 date_default_timezone_set('PRC');
-
-//Using Mysqli
-$dbc = new mysqli(DB_HOST,DB_USER,DB_PWD,DB_DBNAME);
-$db_char = DB_CHARSET;
-$dbc->query("SET NAMES utf8");
-$dbc->query("SET time_zone = '+8:00'");
-
-//$dbinfo
-$dbInfo['database_type'] = DB_TYPE;
-$dbInfo['database_name'] = DB_DBNAME;
-$dbInfo['server'] = DB_HOST;
-$dbInfo['username'] = DB_USER;
-$dbInfo['password'] = DB_PWD;
-$dbInfo['charset'] = DB_CHARSET;
-
 
 
 //Define system Path

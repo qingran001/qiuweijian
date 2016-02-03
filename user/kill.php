@@ -24,8 +24,9 @@ require_once '_main.php'; ?>
 
                             <div class="callout callout-danger">
                                 <h4>Bye!</h4>
-                                <p>如果你需要从我们的数据库移除账户信息，请在此输入密码并确认。</p>
-                                <p>点击删除按钮后无后续确认，请谨慎操作。</p>
+                                <p>如果你需要从我们的数据库移除账户信息,请在此输入密码并确认。</p>
+								<p>删除账号将 <b>不会</b> 退还您充值的金额,且未使用的流量将作废。</p>
+                                <p>点击删除按钮后无后续确认,并默认您已同意上述条件,请谨慎操作。</p>
                             </div>
 
                             <div id="msg-error" class="alert alert-warning alert-dismissable" style="display:none">

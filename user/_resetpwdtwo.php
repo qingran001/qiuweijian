@@ -2,11 +2,15 @@
 //设置编码
 header("content-type:text/html;charset=utf-8");
 require_once '../lib/config.php';
-//mailgun
-require '../vendor/autoload.php';
-use Mailgun\Mailgun;
-$mg = new Mailgun($mailgun_key);
-$domain = $mailgun_domain;
+
+$mg = new Ss\Etc\MailSmtp();
+if($mail_smtp_Connection == 1){
+	$mg->setServer($mail_smtp_Server,$mail_smtp_Account,$mail_smtp_password,$mail_smtp_Port,true);
+}else{
+	$mg->setServer($mail_smtp_Server,$mail_smtp_Account,$mail_smtp_password,$mail_smtp_Port,false);
+}
+$mg->setFrom($mail_smtp_Account);
+
 //
 $code     = $_POST['code'];
 $email    = $_POST['email'];
@@ -34,10 +38,9 @@ if(!$rs){
     $u   = new \Ss\User\User($uid);
     if($rst->IsCharOK($code,$uid)){
         $NewPwd = $password;
-        $mg->sendMessage($domain, array('from'    => "no-reply@".$mailgun_domain,
-            'to'      => $email,
-            'subject' => $site_name." 提示：您的新密码重置成功！",
-            'text'    => "您在 ".date("Y-m-d H:i:s")." 重置了密码。"));
+		$mg->setReceiver($email);
+		$mg->setMail($site_name." 提示：您的新密码重置成功！","您在 ".date("Y-m-d H:i:s")." 重置了密码。");
+		$mg->sendMail();
         $u->UpdatePWd($NewPwd);
         $rst->Del($code,$uid);
         $a['code'] = '1';

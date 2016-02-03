@@ -54,7 +54,7 @@ class Ss {
     function  get_money(){
         return $this->get_user_info_array()['money'];
     }
-
+	
     //get unused traffic
     function unused_transfer(){
         //global $dbc;
@@ -73,12 +73,16 @@ class Ss {
 
     //check is able to check in
     function is_able_to_check_in(){
-        $now = time();
-        if( $now-$this->get_last_check_in_time() > 3600*22 ){
-            return 1;
-        }else{
-            return 0;
-        }
+		if($this -> get_plan() == 'pro'){
+			return 0;
+		}else{
+			$now = time();
+			if( $now-$this->get_last_check_in_time() > 3600*24 ){
+				return 1;
+			}else{
+				return 0;
+			}
+		}
     }
 
     //update last check_in time

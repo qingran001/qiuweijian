@@ -10,6 +10,7 @@ $c = new \Ss\User\Invite();
         <div class="row center">
             <h5>邀请码实时刷新</h5>
             <h5>如遇到无邀请码请找已经注册的用户获取。</h5>
+			<h5>点击邀请码即可直接进入注册。</h5>
         </div>
     </div>
 </div>
@@ -37,7 +38,7 @@ $c = new \Ss\User\Invite();
                             ?>
                             <tr>
                                 <td><?php echo $data['id'];?></td>
-                                <td><?php echo $data['code'];?></td>
+                                <td><a href="user/register.php?code=<?php echo $data['code'];?>"><?php echo $data['code'];?></a></td>
                                 <td>可用</td>
                             </tr>
                         <?php } ?>

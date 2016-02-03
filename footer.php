@@ -1,10 +1,9 @@
-﻿<footer class="page-footer orange">
+<footer class="page-footer orange">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">关于</h5>
-                <p class="grey-text text-lighten-4">本站仅提供麋鹿校园智能路由用户用于科学上网.</p>
-                技术支持联系QQ：307724975</p>
+                <p class="grey-text text-lighten-4">本站提供某种帐号用于科学上网.</p>
 
 
             </div>
@@ -27,11 +26,11 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            &copy; Milu-ss  Powered by <a class="orange-text text-lighten-3" href="/">江西恒源科技有限公司</a> <?php echo $version; ?>
+            &copy; <?php echo $site_name."  ".date('Y'); ?>  Powered by <a class="orange-text text-lighten-3" href="https://github.com/orvice/ss-panel">ss-panel</a> <?php echo $version; ?>
             Processed in <?php
             $Runtime->Stop();
             echo $Runtime->SpendTime()."ms";
-            ?> Theme by <a class="orange-text text-lighten-3" href="/">麋鹿</a>
+            ?> Theme by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
         </div>
     </div>
 </footer>

@@ -27,7 +27,7 @@ require_once '_check.php';
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="skin-blue">
+<body class="skin-blue" id="skin-blue">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -43,7 +43,9 @@ require_once '_check.php';
                 <span class="icon-bar"></span>
             </a>
             <div class="navbar-custom-menu">
+						
                 <ul class="nav navbar-nav">
+			
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -69,6 +71,7 @@ require_once '_check.php';
                             </li>
                         </ul>
                     </li>
+					
                 </ul>
             </div>
         </nav>
@@ -116,6 +119,12 @@ require_once '_check.php';
                 <li >
                     <a href="update.php">
                         <i class="fa  fa-pencil"></i> <span>修改资料</span>
+                    </a>
+                </li>
+				
+				<li >
+                    <a href="buy.php">
+                        <i class="fa fa-shopping-cart"></i> <span>购买流量</span>
                     </a>
                 </li>
 

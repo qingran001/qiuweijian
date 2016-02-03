@@ -1,16 +1,16 @@
-﻿<?php
+<?php
 require_once '../lib/config.php';
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Milu - 麋鹿校园智能路由代理</title>
+    <title><?php echo $site_name;  ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../asset/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="../asset/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link href="../asset/css/blue.css" rel="stylesheet" type="text/css" />
@@ -18,18 +18,18 @@ require_once '../lib/config.php';
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
 <body class="register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="../"><b>Milu-Ss</b></a>
+        <a href="../"><b><?php echo $site_name;  ?></b></a>
     </div>
 
     <div class="register-box-body">
-        <p class="login-box-msg">注册，然后畅享国内外互联。</p>
+        <p class="login-box-msg">注册，然后变成一只猫。</p>
 
             <div class="form-group has-feedback">
                 <input type="text" id="name" class="form-control" placeholder="昵称"/>
@@ -47,8 +47,8 @@ require_once '../lib/config.php';
                 <input type="password" id="repasswd" class="form-control" placeholder="重复密码"/>
                 <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
             </div>
-            <div class="form-group has-feedback">
-                <input type="text" id="code" class="form-control" placeholder="邀请码"/>
+            <div class="form-group has-feedback" <?php if($user_need_invite != 1){ ?>style="display:none"<?php } ?>>
+                <input type="text" id="code" class="form-control" placeholder="邀请码" <?php if(isset($_GET['code'])): ?>value="<?php echo htmlspecialchars($_GET['code']); ?>"<?php endif; ?>/>
                 <span class="glyphicon glyphicon-send form-control-feedback"></span>
             </div>
 

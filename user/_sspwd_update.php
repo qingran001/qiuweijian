@@ -7,8 +7,7 @@ if($_POST['sspwd'] == ''){
     $pwd = \Ss\Etc\Comm::get_random_char(8);
 }else{
     $pwd = $_POST['sspwd'];
-    $pwd = htmlspecialchars($pwd, ENT_QUOTES, 'UTF-8');
-    $pwd = \Ss\Etc\Comm::checkHtml($pwd);
+    $pwd = htmlspecialchars(strip_tags($pwd));
 }
 $oo->update_ss_pass($pwd);
 $a['ok'] = '1';

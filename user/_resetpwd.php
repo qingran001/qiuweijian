@@ -2,12 +2,15 @@
 //设置编码
 header("content-type:text/html;charset=utf-8");
 require_once '../lib/config.php';
-//mailgun
-require '../vendor/autoload.php';
-use Mailgun\Mailgun;
-$mg = new Mailgun($mailgun_key);
-$domain = $mailgun_domain;
-//
+
+$mg = new Ss\Etc\MailSmtp();
+if($mail_smtp_Connection == 1){
+	$mg->setServer($mail_smtp_Server,$mail_smtp_Account,$mail_smtp_password,$mail_smtp_Port,true);
+}else{
+	$mg->setServer($mail_smtp_Server,$mail_smtp_Account,$mail_smtp_password,$mail_smtp_Port,false);
+}
+$mg->setFrom($mail_smtp_Account);
+
 $email    = $_GET['email'];
 $c = new \Ss\User\UserCheck();
 $q = new \Ss\User\Query();
@@ -19,11 +22,9 @@ if($c->IsEmailUsed($email)){
         $code = $rst->NewLog();
         //send
         # Now, compose and send your message.
-        $mg->sendMessage($domain, array('from'    => "no-reply@".$mailgun_domain,
-            'to'      => $email,
-            'subject' => $site_name."重置密码",
-            'text'    => '请访问此链接申请重置密码'.$site_url."/user/resetpwd_do.php?code=".$code."&uid=".$uid));
-
+		$mg->setReceiver($email);
+		$mg->setMail('重置密码','请访问此链接申请重置密码'.$site_url."/user/resetpwd_do.php?code=".$code."&uid=".$uid);
+		$mg->sendMail();
         $a['code'] = '1';
         $a['ok'] = '1';
         $a['msg']  =  "已经发送到邮箱";

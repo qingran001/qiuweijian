@@ -23,7 +23,7 @@ $node = new Ss\Node\Node();
                     <div class="box box-solid">
                         <div class="box-header">
                             <i class="fa fa-th-list"></i>
-                            <h3 class="box-title">节点</h3>
+                            <h3 class="box-title">免费节点</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="callout callout-warning">
@@ -72,8 +72,10 @@ $node = new Ss\Node\Node();
                         <div class="box-body">
                             <div class="callout callout-warning">
                                 <h4>注意!</h4>
-                                <p>....</p>
+                                <p>只有高级用户才可以连接这些节点</p>
+								<?php if($oo -> get_plan() != 'pro'){ ?> <p><a href="buy.php">购买流量</a>从而升级为高级用户来查看这些节点</p><?php } ?>
                             </div><?php
+							if($oo -> get_plan() == 'pro'){
                             $node1 = $node->NodesArray(1);
                             foreach($node1 as $row){
                                 ?>
@@ -100,7 +102,7 @@ $node = new Ss\Node\Node();
                                         </div><!-- /.tab-pane -->
                                     </div><!-- /.tab-content -->
                                 </div><!-- nav-tabs-custom -->
-                            <?php }?>
+                            <?php }}else{}?>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div><!-- /.col (right) -->
